@@ -4,8 +4,11 @@ import java.util.ArrayList;
 public class Cube {
     int nx, ny, nz;
     float x, y, z;
+    float size_x = x / nx;
+    float size_y = y / ny;
+    float size_z = z / nz;
     public ArrayList<Point3D> global = new ArrayList<>();
-    public ArrayList<Point3D> local = new ArrayList<>();
+    public ArrayList<Point3D> cubes = new ArrayList<>();
     public ArrayList<Point3D> paintCube = new ArrayList<>();
 
     public Cube(int nx, int ny, int nz, float x, float y, float z) {
@@ -25,4 +28,5 @@ public class Cube {
                 }
         }
     }
+
 }

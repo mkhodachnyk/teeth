@@ -47,9 +47,9 @@ public class PaintCube {
         gl.glRotated(rotateY, 0, 1, 0);
         gl.glScaled(scale, scale, scale);
 
-        x = x/2;
-        y = y/2;
-        z = z/2;
+//        x = x/2;
+//        y = y/2;
+//        z = z/2;
         gl.glBegin(gl.GL_LINES);
 
 //front
@@ -144,12 +144,60 @@ public class PaintCube {
             gl.glPointSize(5);
             Cube cube = new Cube(nx, ny, nz, x, y, z);
             cube.paintPoints();
+
             gl.glBegin(gl.GL_POINTS);
             for (Point3D p : cube.paintCube) {
-                //gl.glVertex3d(p.getX(), p.getY(), p.getZ());
-                
+                gl.glVertex3d(p.getX(), p.getY(), p.getZ());
             }
             gl.glEnd();
+            Point3D FrontLeftDown = new Point3D(x, -y, -z);
+            Point3D FrontRightDown = new Point3D(x - (x*2/ nx), -y, -z);
+            Point3D FrontRightUp = new Point3D(x- (x*2/ nx), -y + (y*2/ny), -z);
+            Point3D FrontLeftUp = new Point3D(x, -y + (y*2/ny), -z);
+            Point3D BackLeftDown = new Point3D(x, -y, -z + (z*2/nz));
+            Point3D BackRightDown= new Point3D(x - (x*2/ nx), -y, -z + (z*2/nz));
+            Point3D BackRightUp= new Point3D(x- (x*2/ nx), -y + (y*2/ny), -z+ (z*2/nz));
+            Point3D BackLeftUp= new Point3D(x, -y + (y*2/ny), -z+ (z*2/nz));
+            gl.glBegin(gl.GL_LINES);
+            gl.glVertex3d(FrontLeftDown.getX(), FrontLeftDown.getY(), FrontLeftDown.getZ());
+            gl.glVertex3d(FrontRightDown.getX(), FrontRightDown.getY(), FrontRightDown.getZ());
+
+            gl.glVertex3d(FrontRightDown.getX(), FrontRightDown.getY(), FrontRightDown.getZ());
+            gl.glVertex3d(FrontRightUp.getX(), FrontRightUp.getY(), FrontRightUp.getZ());
+
+            gl.glVertex3d(FrontRightUp.getX(), FrontRightUp.getY(), FrontRightUp.getZ());
+            gl.glVertex3d(FrontLeftUp.getX(), FrontLeftUp.getY(), FrontLeftUp.getZ());
+
+            gl.glVertex3d(FrontLeftUp.getX(), FrontLeftUp.getY(), FrontLeftUp.getZ());
+            gl.glVertex3d(FrontLeftDown.getX(), FrontLeftDown.getY(), FrontLeftDown.getZ());
+
+            gl.glVertex3d(BackLeftDown.getX(), BackLeftDown.getY(), BackLeftDown.getZ());
+            gl.glVertex3d(BackRightDown.getX(), BackRightDown.getY(), BackRightDown.getZ());
+
+            gl.glVertex3d(BackRightDown.getX(), BackRightDown.getY(), BackRightDown.getZ());
+            gl.glVertex3d(BackRightUp.getX(), BackRightUp.getY(), BackRightUp.getZ());
+
+            gl.glVertex3d(BackRightUp.getX(), BackRightUp.getY(), BackRightUp.getZ());
+            gl.glVertex3d(BackLeftUp.getX(), BackLeftUp.getY(), BackLeftUp.getZ());
+
+            gl.glVertex3d(BackLeftUp.getX(), BackLeftUp.getY(), BackLeftUp.getZ());
+            gl.glVertex3d(BackLeftDown.getX(), BackLeftDown.getY(), BackLeftDown.getZ());
+
+            gl.glVertex3d(FrontLeftUp.getX(), FrontLeftUp.getY(), FrontLeftUp.getZ());
+            gl.glVertex3d(BackLeftUp.getX(), BackLeftUp.getY(), BackLeftUp.getZ());
+
+            gl.glVertex3d(FrontLeftDown.getX(), FrontLeftDown.getY(), FrontLeftDown.getZ());
+            gl.glVertex3d(BackLeftDown.getX(), BackLeftDown.getY(), BackLeftDown.getZ());
+
+            gl.glVertex3d(FrontRightUp.getX(), FrontRightUp.getY(), FrontRightUp.getZ());
+            gl.glVertex3d(BackRightUp.getX(), BackRightUp.getY(), BackRightUp.getZ());
+
+            gl.glVertex3d(FrontRightDown.getX(), FrontRightDown.getY(), FrontRightDown.getZ());
+            gl.glVertex3d(BackRightDown.getX(), BackRightDown.getY(), BackRightDown.getZ());
+
+            gl.glEnd();
+
+
         }
 
         gl.glPopMatrix();

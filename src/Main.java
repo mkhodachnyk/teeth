@@ -107,8 +107,8 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String sX = xTextField.getText();
-                String sY = zTextField.getText();
-                String sZ = yTextField.getText();
+                String sY = yTextField.getText();
+                String sZ = zTextField.getText();
                 String snx = nxTextField.getText();
                 String sny = nyTextField.getText();
                 String snz = nzTextField.getText();
